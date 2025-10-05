@@ -1,26 +1,80 @@
+/* src/app/globals.css */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Define your design tokens */
+@theme {
+  --font-sans: var(--font-poppins), sans-serif;
+  --font-serif: var(--font-lora), serif;
+
+  --h2-font-size: 25px;
+  --h2-padding-bottom: 10px;
+  --h2-padding-top: 10px;
+
+  --h3-font-size: 20px;
+  --h3-padding-bottom: 5px;
+  --h3-padding-top: 5px;
+
+  --h4-font-size: 18px;
+  --h4-padding-bottom: 5px;
+  --h4-padding-top: 5px;
+
+
+  --color-accent: #f472b6;
+  --color-accent-hover: #ec4899;
+  --color-text-main: #333333;
+  --color-text-light: #666666;
+  --color-light-gray: #f8f8f8;
+
+  --color-text-h2: #cc7899;
+  --color-text-h3: #cc6999;
+  --color-text-h4: #cc6999;
+  --color-text-h1: #a16699;
+
+  --breakpoint-xs: 480px;
+  --breakpoint-3xl: 1920px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Apply global base styles */
+@layer base {
+  h2 {
+    font-size: var(--h2-font-size);
+    font-family: var(--font-sans);
+    color: var(--color-text-h2);
+    padding-bottom:var(--h2-padding-bottom);
+    padding-top:var(--h2-padding-top);
+    font-weight: 600;
   }
-}
+   h3 {
+    font-size: var(--h3-font-size);
+    font-family: var(--font-sans);
+    color: var(--color-text-h3);
+    padding-bottom:var(--h3-padding-bottom);
+    padding-top:var(--h3-padding-top);
+    font-weight: 600;
+  }
+  h4 {
+    font-size: var(--h3-font-size);
+    font-family: var(--font-sans);
+    color: var(--color-text-h3);
+    padding-bottom:var(--h3-padding-bottom);
+    padding-top:var(--h3-padding-top);
+    font-weight: 600;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .recipe-card-print, .recipe-card-print * {
+    visibility: visible;
+  }
+  .recipe-card-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none !important;
+    box-shadow: none !important;
+  }
 }
