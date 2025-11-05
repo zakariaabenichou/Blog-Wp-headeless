@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'; // for App Router
+
 export async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
   const headers = { 'Content-Type': 'application/json' };
 

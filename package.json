@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev --turbopack -p 3004",
+    "build": "next build --turbopack ",
     "start": "next start",
     "lint": "eslint"
   },
@@ -19,7 +19,9 @@
     "react-scroll": "^1.9.3"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.4.0",
     "@eslint/eslintrc": "^3",
+    "@next/eslint-plugin-next": "^15.5.4",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.17",
     "@types/cheerio": "^1.0.0",
@@ -27,11 +29,15 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-scroll": "^1.8.10",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
+    "eslint": "^9.37.0",
     "eslint-config-next": "15.5.3",
+    "eslint-plugin-react-hooks": "^6.1.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.45.0"
   }
 }

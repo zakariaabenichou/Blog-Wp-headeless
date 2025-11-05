@@ -1,4 +1,12 @@
 {
   "schemaVersion": 2,
-  "dockerfilePath": "./Dockerfile"
+  "dockerfilePath": "./Dockerfile",
+  "containerHttpPort": 3005,
+  "imageName": "my-nextjs-app",
+  "instanceCount": 1,
+  "notExposeAsWebApp": false,
+  "volumes": [],
+  "env": {
+    "NEXT_PUBLIC_WORDPRESS_URL": "http://srv-captain--nextjs/graphql"
+  }
 }

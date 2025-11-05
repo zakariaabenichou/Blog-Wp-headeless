@@ -37,7 +37,7 @@ function AboutWidget() {
       />
       <h3 className="text-xl font-serif font-bold text-text-main mb-2">About Me</h3>
       <p className="text-text-light text-sm mb-4">
-        Hi! I'm a passionate home cook sharing my favorite tried-and-true recipes. Welcome to my kitchen!
+        {'Hi! I\'m a passionate home cook sharing my favorite tried-and-true recipes. Welcome to my kitchen!'}
       </p>
       <Link href="/about" className="text-accent font-bold hover:underline">
         Read More

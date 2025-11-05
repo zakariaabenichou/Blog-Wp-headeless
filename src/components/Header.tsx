@@ -1,5 +1,5 @@
 'use client';
-// src/components/Header.tsx
+
 import Link from 'next/link';
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi'; 
@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex-shrink-0">
           <Link href="/" className="block">
             <Image
-              src="http://localhost:8000/wp-content/uploads/2025/09/logo-elena-bakes-dishes-to-learn.png"
+              src="http://app.admin.caprover-root.dishestolearn.com/wp-content/uploads/2025/09/logo-elena-bakes-dishes-to-learn.png"
               alt="Elena Bakes Logo"
               width={120}   // adjust to your logo size
               height={120}   // adjust to your logo size

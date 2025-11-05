@@ -12,7 +12,12 @@ type Faq = {
 };
 
 export default function FaqAccordion({ faqString }: { faqString: string }) {
-  // 1. Parse the raw text from ACF into a structured array of Q&A objects
+  
+  // 1. State to track which accordion item is currently open (MOVED TO TOP)
+  // FIX: Hooks must be called before any early returns.
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  // 2. Parse the raw text from ACF into a structured array of Q&A objects
   const faqs: Faq[] = faqString
     .split('\n')
     .filter(line => line.includes('|'))
@@ -25,13 +30,10 @@ export default function FaqAccordion({ faqString }: { faqString: string }) {
       };
     });
 
-  // If there are no valid FAQs, don't render anything
+  // 3. If there are no valid FAQs, don't render anything (Early return is safe now)
   if (faqs.length === 0) {
     return null;
   }
-
-  // 2. State to track which accordion item is currently open
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
     // If the clicked item is already open, close it. Otherwise, open the new one.
@@ -39,7 +41,7 @@ export default function FaqAccordion({ faqString }: { faqString: string }) {
   };
 
   return (
-    // 3. Render the section with a title and the list of accordions
+    // 4. Render the section with a title and the list of accordions
     <section className="mt-12 border-t pt-8">
       <h2 className="text-3xl font-serif font-bold text-text-main mb-6">
         Frequently Asked Questions

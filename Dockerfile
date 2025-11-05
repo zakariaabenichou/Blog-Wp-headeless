@@ -1,25 +1,22 @@
-# Step 1 — Build the Next.js app
-FROM node:20 AS builder
+# Base Node.js image
+FROM node:20-alpine
+
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+# Copy package files first
+COPY package.json package-lock.json ./
 
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the app
 COPY . .
+
+# Build without lint/TS checks
 RUN npm run build
 
-# Step 2 — Run the app in production
-FROM node:20-alpine
-WORKDIR /app
+# Expose port
+EXPOSE 3005
 
-ENV NODE_ENV=production
-
-COPY --from=builder /app/package*.json ./
-RUN npm ci --omit=dev
-
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.js ./next.config.js
-
-EXPOSE 3000
+# Start Next.js
 CMD ["npm", "start"]

@@ -1,16 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-images: {
+  images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '8000',
-        pathname: '/wp-content/uploads/**',
+        protocol: "http",
+        hostname: "app.admin.caprover-root.dishestolearn.com",
+        pathname: "/wp-content/uploads/**",
       },
     ],
   },
+  
 };
 
 export default nextConfig;

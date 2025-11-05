@@ -6,13 +6,40 @@ import Image from 'next/image';
 import CommentForm from './CommentForm';
 import { motion, AnimatePresence } from 'framer-motion'; // Import animation components
 
+// Define the structure of the Author object
+interface CommentAuthor {
+  node: {
+    name: string;
+    avatar: {
+      url: string;
+    };
+  };
+}
+
+// Define the structure of a single Comment object
+interface CommentNode {
+  id: string; // The comment ID
+  date: string; // The comment date (used for new Date())
+  content: string; // The comment content (HTML string)
+  author: CommentAuthor;
+  isPending?: boolean; // Added for the new comment animation logic
+}
+
+// Define the shape of the data passed from the server
+interface CommentsProps {
+  comments: {
+    nodes: CommentNode[]; // The array of comments is inside the 'nodes' property
+  } | null; // It can also be null
+  postId: number;
+}
+
 export default function Comments({ comments, postId }: { comments: any, postId: number }) {
   // --- STATE MANAGEMENT ---
   // Initialize the state with the comments passed from the server
-  const [commentList, setCommentList] = useState(comments?.nodes || []);
+  const [commentList, setCommentList] = useState<CommentNode[]>(comments?.nodes || []);
 
   // This function will be called by the form when a new comment is submitted
-  const handleCommentSubmitted = (newComment: any) => {
+  const handleCommentSubmitted = (newComment: CommentNode) => {
     setCommentList(prevComments => [newComment, ...prevComments]); // Add the new comment to the top of the list
   };
 
